@@ -13,33 +13,24 @@
     </head>
     <body>
         <textarea name="name" rows="8" cols="80" id="text"></textarea>
-        <button type="button" name="button" onclick="cryptage()" id="button">CRYPTITUDE</button>
+        <button type="button" name="button" onclick="cryptage(this)" id="button">CRYPTITUDE</button>
         <div id="reponse"></div>
     </body>
     <script>
-        var text = document.getElementById("text").value;
         var button = document.getElementById("button");
         var result = document.getElementById("reponse");
         var alfabet = "abcdefghijklmnopqrstuvwxyz";
-        var shift = 7;
+        var shift = 18000;
 
         function cryptage(){
+            var text = document.getElementById("text").value;
             var mot = "";
-            for(i=0; i<text.length; i++){
+            for(var i=0; i<text.length; i++){
                 var lettre = text[i];
                 var index = alfabet.indexOf(lettre);
-                var lettre = alfabet[index+shift];
-                if (index + shift > 25) {
-                    lettre = alfabet[index + shift - 26];
-                    mot += lettre;
-                    }
-                else {
-                    lettre = alfabet[index + shift];
-                    mot += lettre;
-                    }
+                lettre = alfabet[(index+shift)%26];
+                mot += lettre;
             }
-
-
             result.innerHTML = mot;
         }
     </script>
