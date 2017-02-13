@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cesar</title>
+        <style media="screen">
+            div {
+                height: 100px;
+                width: 300px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <textarea name="name" rows="8" cols="80" id="text"></textarea>
+        <button type="button" name="button" onclick="cryptage()" id="button">CRYPTITUDE</button>
+        <div id="reponse"></div>
+    </body>
+    <script>
+        var text = document.getElementById("text").value;
+        var button = document.getElementById("button");
+        var result = document.getElementById("reponse");
+        var alfabet = "abcdefghijklmnopqrstuvwxyz";
+
+        function cryptage(){
+            for(i=0; i<text.length; i++){
+                var index = alfabet.indexOf(text[i]);
+                var textCrypt = text.replace(text[i], alfabet[index+1]);
+            }
+            result.innerHTML = textCrypt;
+        }
+    </script>
+</html>
