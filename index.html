@@ -21,13 +21,26 @@
         var button = document.getElementById("button");
         var result = document.getElementById("reponse");
         var alfabet = "abcdefghijklmnopqrstuvwxyz";
+        var shift = 7;
 
         function cryptage(){
+            var mot = "";
             for(i=0; i<text.length; i++){
-                var index = alfabet.indexOf(text[i]);
-                var textCrypt = text.replace(text[i], alfabet[index+1]);
+                var lettre = text[i];
+                var index = alfabet.indexOf(lettre);
+                var lettre = alfabet[index+shift];
+                if (index + shift > 25) {
+                    lettre = alfabet[index + shift - 26];
+                    mot += lettre;
+                    }
+                else {
+                    lettre = alfabet[index + shift];
+                    mot += lettre;
+                    }
             }
-            result.innerHTML = textCrypt;
+
+
+            result.innerHTML = mot;
         }
     </script>
 </html>
